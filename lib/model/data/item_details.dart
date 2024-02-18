@@ -4,7 +4,7 @@ class ItemDetails {
   final String id;
   final String category;
   final String brand;
-  final int price;
+  final double price;
   final List<ImageProvider> images;
   final String title;
   final String description;
@@ -28,11 +28,12 @@ class ItemDetails {
   });
 
   factory ItemDetails.fromJson(Map<String, dynamic> json) {
+    final stock = json['stock'] as Map<String, dynamic>;
     return ItemDetails(
       id: json['id'],
       category: json['category'],
       brand: json['brand'],
-      price: json['price'],
+      price: double.parse(json['price']),
       images: List<ImageProvider>.from(
         (json['images'] as List<dynamic>).map(
           (e) => AssetImage(e as String),
@@ -40,10 +41,14 @@ class ItemDetails {
       ),
       title: json['title'],
       description: json['description'],
-      rating: json['rating'],
-      reviewCount: json['reviewCount'],
+      rating: double.parse(json['rating']),
+      reviewCount: int.parse(json['reviewCount']),
       size: List<String>.from(json['size']),
-      stock: Map<String, int>.from(json['stock']),
+      stock: Map<String, int>.from(
+        stock.map(
+          (key, value) => MapEntry(key, int.parse(value as String)),
+        ),
+      ),
     );
   }
 }

@@ -6,8 +6,8 @@ abstract class ItemRepository {
     String keyword, {
     String? category,
     String? brand,
-    int? minPrice,
-    int? maxPrice,
+    double? minPrice,
+    double? maxPrice,
     SortBy? sortBy = SortBy.highestRating,
   });
 
@@ -20,8 +20,8 @@ class MockItemRepository implements ItemRepository {
     String keyword, {
     String? category,
     String? brand,
-    int? minPrice,
-    int? maxPrice,
+    double? minPrice,
+    double? maxPrice,
     SortBy? sortBy = SortBy.highestRating,
   }) async {
     return Future.delayed(
@@ -33,10 +33,10 @@ class MockItemRepository implements ItemRepository {
               'id': '1',
               'category': 'Sneakers',
               'brand': 'Victoria',
-              'price': 150,
+              'price': '150.0',
               'thumbnail': 'assets/images/sneakers.png',
-              'rating': 4.5,
-              'reviewCount': 98,
+              'rating': '4.5',
+              'reviewCount': '98',
             },
           ),
           Item.fromJson(
@@ -44,10 +44,10 @@ class MockItemRepository implements ItemRepository {
               'id': '2',
               'category': 'Handbag',
               'brand': 'Linus Torvalds',
-              'price': 1400,
+              'price': '1400',
               'thumbnail': 'assets/images/handbag.png',
-              'rating': 4.8,
-              'reviewCount': 12,
+              'rating': '4.8',
+              'reviewCount': '12',
             },
           ),
           Item.fromJson(
@@ -55,10 +55,10 @@ class MockItemRepository implements ItemRepository {
               'id': '3',
               'category': 'Dress Shirt',
               'brand': 'Brooks Sisters',
-              'price': 80,
+              'price': '80.0',
               'thumbnail': 'assets/images/dress_shirt.png',
-              'rating': 4.3,
-              'reviewCount': 120,
+              'rating': '4.3',
+              'reviewCount': '120',
             },
           ),
         ];
@@ -77,10 +77,10 @@ class MockItemRepository implements ItemRepository {
               'id': '3',
               'category': 'Dress Shirt',
               'brand': 'Brooks Sisters',
-              'price': 80,
+              'price': '80.0',
               'thumbnail': 'assets/images/dress_shirt.png',
-              'rating': 4.3,
-              'reviewCount': 120,
+              'rating': '4.3',
+              'reviewCount': '120',
             },
           ),
         ];

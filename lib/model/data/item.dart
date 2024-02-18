@@ -4,7 +4,7 @@ class Item {
   final String id;
   final String category;
   final String brand;
-  final int price;
+  final double price;
   final ImageProvider thumbnail;
   final double rating;
   final int reviewCount;
@@ -24,10 +24,10 @@ class Item {
       id: json['id'],
       category: json['category'],
       brand: json['brand'],
-      price: json['price'],
+      price: double.parse(json['price']),
       thumbnail: AssetImage(json['thumbnail']),
-      rating: json['rating'],
-      reviewCount: json['reviewCount'],
+      rating: double.parse(json['rating']),
+      reviewCount: int.parse(json['reviewCount']),
     );
   }
 }

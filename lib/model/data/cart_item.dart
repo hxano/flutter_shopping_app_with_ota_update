@@ -11,5 +11,5 @@ class CartItem {
     required this.quantity,
   });
 
-  int get total => item.price * quantity;
+  double get total => item.price * quantity;
 }
