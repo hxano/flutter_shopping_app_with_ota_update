@@ -1,0 +1,27 @@
+name: flutter_shopping_app_with_ota_updates
+description: "An e-commerce shopping app using Flutter/Dart and Shorebird. This sample app supports OTA update."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  assets:
+    - shorebird.yaml
+  uses-material-design: true
