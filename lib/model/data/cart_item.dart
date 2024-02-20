@@ -2,8 +2,8 @@ import 'item_details.dart';
 
 class CartItem {
   final ItemDetails item;
-  final String size;
-  final int quantity;
+  String size;
+  int quantity;
 
   CartItem({
     required this.item,
