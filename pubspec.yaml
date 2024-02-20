@@ -13,15 +13,51 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  carousel_slider: ^4.2.1
+  salomon_bottom_bar: ^3.3.2
+  riverpod_annotation: ^2.3.4
+  flutter_riverpod: ^2.4.10
+  page_transition: ^2.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  riverpod_generator: ^2.3.11
+  build_runner: ^2.4.8
+  custom_lint: ^0.6.0
+  riverpod_lint: ^2.3.9
 
 flutter:
 
   assets:
     - shorebird.yaml
+    - assets/images/
+
+  fonts:
+    - family: Lora
+      fonts:
+        - asset: assets/fonts/Lora/Lora-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Lora/Lora-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Lora/Lora-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Lora/Lora-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Lora/Lora-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Lora/Lora-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Lora/Lora-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Lora/Lora-BoldItalic.ttf
+          weight: 700
+          style: italic
+
+
   uses-material-design: true
