@@ -1,4 +1,5 @@
-import '../data/item_details.dart';
+
+import '../model/data/item_details.dart';
 
 abstract class ItemDetailsRepository {
   Future<ItemDetails> fetchItemDetails(String productId);

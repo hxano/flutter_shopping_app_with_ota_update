@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../data/item.dart';
+import '../model/data/item.dart';
 
 part 'favorites_viewmodel.g.dart';
 

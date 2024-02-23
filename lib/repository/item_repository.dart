@@ -1,5 +1,5 @@
 import '../../enum.dart';
-import '../data/item.dart';
+import '../model/data/item.dart';
 
 abstract class ItemRepository {
   Future<List<Item>> search(

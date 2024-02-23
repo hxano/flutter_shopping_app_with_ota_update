@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping_app_with_ota_updates/model/repository/item_repository.dart';
-import 'package:flutter_shopping_app_with_ota_updates/model/repository/showcase_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../data/item.dart';
+import '../model/data/item.dart';
+import '../repository/item_repository.dart';
+import '../repository/showcase_repository.dart';
 
 part 'home_viewmodel.g.dart';
 

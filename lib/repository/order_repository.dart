@@ -1,4 +1,4 @@
-import '../data/cart_item.dart';
+import '../model/data/cart_item.dart';
 
 abstract class OrderRepository {
   Future<void> order(List<CartItem> items);
