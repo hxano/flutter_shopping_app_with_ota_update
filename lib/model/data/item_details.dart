@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'item.dart';
+
 class ItemDetails {
   final String id;
   final String category;
@@ -49,6 +51,22 @@ class ItemDetails {
           (key, value) => MapEntry(key, int.parse(value as String)),
         ),
       ),
+    );
+  }
+
+  bool isOutOfStock(String size, int quantity) {
+    return stock[size] == null || stock[size]! < quantity;
+  }
+
+  Item toItem() {
+    return Item(
+      id: id,
+      brand: brand,
+      category: category,
+      price: price,
+      thumbnail: images.first,
+      rating: rating,
+      reviewCount: reviewCount,
     );
   }
 }
