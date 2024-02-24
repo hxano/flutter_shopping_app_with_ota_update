@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_shopping_app_with_ota_updates/view/main_navigator.dart';
+import 'package:flutter_shopping_app_with_ota_updates/view/screens/item_details/item_details_screen.dart';
+import 'package:page_transition/page_transition.dart';
+
+import 'view/screens/search/detailed_search_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,59 +23,40 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Shop',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Lora',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Shop'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.purpleAccent,
+            foregroundColor: Colors.white,
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.grey[200],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      home: const MainNavigator(),
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/detailed_search':
+            final text = settings.arguments as String;
+            return PageTransition(
+              child: DetailedSearchScreen(text: text),
+              type: PageTransitionType.rightToLeft,
+            );
+            case '/item_details':
+              final id = settings.arguments as String;
+              return PageTransition(
+                child: ItemDetailsScreen(id: id),
+                type: PageTransitionType.rightToLeft,
+              );
+          default:
+            return null;
+        }
+      },
     );
   }
 }
