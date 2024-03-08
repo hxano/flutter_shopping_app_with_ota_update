@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_shopping_app_with_ota_updates/main.dart';
 import 'package:flutter_shopping_app_with_ota_updates/view/common.dart';
 
 import '../../../model/data/item.dart';
@@ -25,7 +27,7 @@ class FavoritesScreenHeader extends StatelessWidget {
   }
 }
 
-class FavoriteItemCard extends StatelessWidget {
+class FavoriteItemCard extends ConsumerWidget {
   const FavoriteItemCard({
     super.key,
     required this.item,
@@ -38,10 +40,14 @@ class FavoriteItemCard extends StatelessWidget {
   final VoidCallback onRemove;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ab = ref.watch(abTestProvider);
     return Stack(
       children: [
-        ItemThumbnailCard(
+        ab ? ItemThumbnailCardA(
+          item: item,
+          onTap: onTap,
+        ) : ItemThumbnailCardB(
           item: item,
           onTap: onTap,
         ),

@@ -37,8 +37,8 @@ SimpleDialog thankYouDialog(BuildContext context) {
   );
 }
 
-class ItemThumbnailCard extends StatelessWidget {
-  const ItemThumbnailCard({
+class ItemThumbnailCardA extends StatelessWidget {
+  const ItemThumbnailCardA({
     super.key,
     required this.item,
     required this.onTap,
@@ -117,6 +117,108 @@ class ItemThumbnailCard extends StatelessWidget {
     );
   }
 }
+
+class ItemThumbnailCardB extends StatelessWidget {
+  const ItemThumbnailCardB({
+    super.key,
+    required this.item,
+    required this.onTap,
+  });
+
+  final Item item;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      margin: const EdgeInsets.all(10),
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              flex: 2,
+              child: FittedBox(
+                child: Image(
+                  image: item.thumbnail,
+                  fit: BoxFit.fill,
+                  width: 250,
+                  height: 200,
+                ),
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            item.brand,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            item.category,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              Text(
+                                item.rating.toString(),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '(${item.reviewCount})',
+                                style: const TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      '\$${item.price}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 class MyQuantityInput extends StatelessWidget {
   const MyQuantityInput({

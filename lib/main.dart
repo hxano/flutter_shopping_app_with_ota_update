@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_shopping_app_with_ota_updates/repository/cloud_config.dart';
 import 'package:flutter_shopping_app_with_ota_updates/view/main_navigator.dart';
 import 'package:flutter_shopping_app_with_ota_updates/view/screens/item_details/item_details_screen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -15,6 +16,10 @@ void main() {
   ]);
   runApp(const ProviderScope(child: MyApp()));
 }
+
+final abTestProvider = Provider<bool>((ref) {
+  return CloudConfig().getAbTest();
+});
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

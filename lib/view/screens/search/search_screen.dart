@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_shopping_app_with_ota_updates/main.dart';
 import 'package:flutter_shopping_app_with_ota_updates/view/common.dart';
 import 'package:flutter_shopping_app_with_ota_updates/view/screens/search/components.dart';
 
@@ -71,7 +72,16 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
                   final item = items[index];
-                  return ItemThumbnailCard(
+                  final ab = ref.watch(abTestProvider);
+                  return ab ? ItemThumbnailCardA(
+                    item: item,
+                    onTap: () {
+                      Navigator.of(context).pushNamed(
+                        '/item_details',
+                        arguments: item.id,
+                      );
+                    },
+                  ) : ItemThumbnailCardB(
                     item: item,
                     onTap: () {
                       Navigator.of(context).pushNamed(

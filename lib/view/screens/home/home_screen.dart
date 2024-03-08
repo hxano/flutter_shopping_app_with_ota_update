@@ -4,6 +4,7 @@ import 'package:flutter_shopping_app_with_ota_updates/view/common.dart';
 
 import 'package:flutter_shopping_app_with_ota_updates/view/screens/home/components.dart';
 
+import '../../../main.dart';
 import '../../../viewmodel/home_viewmodel.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -104,7 +105,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     final item = items[index];
-                    return ItemThumbnailCard(
+                    final ab = ref.watch(abTestProvider);
+                    return ab ? ItemThumbnailCardA(
+                      item: item,
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          '/item_details',
+                          arguments: item.id,
+                        );
+                      },
+                    ) : ItemThumbnailCardB(
                       item: item,
                       onTap: () {
                         Navigator.of(context).pushNamed(
